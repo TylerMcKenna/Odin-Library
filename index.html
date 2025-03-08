@@ -6,6 +6,21 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="addBookButton">Add Book</button>
+    <dialog id="modal">
+        <form>
+            <label for="bookName">Book name:</label>
+            <input type="text" id="bookName" name="bookName">
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author">
+            <label for="pageCount">Page count:</label>
+            <input type="text" id="pageCount" name="pageCount">
+            <label for="isRead">Read:</label>
+            <input type="checkbox" id="isRead" name="isRead">
+            <button type="submit" id="submit">Submit</button>
+            <button formmethod="dialog">Cancel</button>
+        </form>
+    </dialog>
     <table id="bookTable">
         <tr>
             <th>Title</th>

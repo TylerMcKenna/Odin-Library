@@ -23,10 +23,10 @@ function addBookToLibrary(title, author, pageCount, isRead) {
 function displayBooks() {
     const propertiesToDisplay = ["title","author","pageCount","isRead"];
     const table = document.querySelector("#bookTable");
-
+    
     for (let i = 0; i < myLibrary.length; i++) {
         const tableRow = document.createElement("tr");
-
+        
         // Iterate the keys in current book, if they key is
         // a desired key, add it to the table row.
         for (const key in myLibrary[i]) {
@@ -36,12 +36,32 @@ function displayBooks() {
                 tableRow.appendChild(columnVal);
             }
         }
-
+        
         table.appendChild(tableRow);
     }
 }
 
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
-addBookToLibrary("The Bible", "God", 3000, true);
-addBookToLibrary("The Sussy Baka", "Kaitlyn", 23, false);
-displayBooks();
+
+
+
+
+const addBookButton = document.querySelector("#addBookButton");
+const modal = document.querySelector("#modal");
+
+addBookButton.addEventListener("click", () => {
+    modal.showModal();
+})
+
+const submitButton = document.querySelector("#submit");
+submitButton.addEventListener("click", submitBook);
+
+function submitBook(event) {
+    event.preventDefault();
+    let bookName = document.querySelector("#bookName").value;
+    let author = document.querySelector("#author").value;
+    let pageCount = document.querySelector("#pageCount").value;
+    let isRead = document.querySelector("#isRead").checked;
+    addBookToLibrary(bookName, author, pageCount, isRead);
+    displayBooks(); // need to make this function reset upon submittal.
+    modal.close();
+}
