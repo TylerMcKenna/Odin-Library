@@ -1,5 +1,39 @@
 const myLibrary = [];
 
+const addBookButton = document.querySelector("#addBookButton");
+const modal = document.querySelector("#modal");
+
+addBookButton.addEventListener("click", () => {
+    modal.showModal();
+})
+
+const submitButton = document.querySelector("#submit");
+submitButton.addEventListener("click", submitBook);
+
+document.querySelector("tbody").addEventListener("click", deleteBook);
+
+function deleteBook(event) {
+    console.log(`Event target: ${event.target.tagName}`);
+    if (event.target.tagName === "BUTTON") {
+        let targetBookId = event.target.parentElement.dataset.bookId;
+        myLibrary.splice(myLibrary.indexOf(myLibrary.find((book) => book.id === targetBookId)), 1);
+    }
+    displayBooks()
+}
+
+function submitBook(event) {
+    event.preventDefault();
+
+    let bookName = document.querySelector("#bookName").value;
+    let author = document.querySelector("#author").value;
+    let pageCount = document.querySelector("#pageCount").value;
+    let isRead = document.querySelector("#isRead").checked;
+
+    addBookToLibrary(bookName, author, pageCount, isRead);
+    displayBooks();
+    modal.close();
+}
+
 function Book(title, author, pageCount, isRead) {
     this.id = crypto.randomUUID();
     this.title = title;
@@ -22,46 +56,25 @@ function addBookToLibrary(title, author, pageCount, isRead) {
 
 function displayBooks() {
     const propertiesToDisplay = ["title","author","pageCount","isRead"];
-    const table = document.querySelector("#bookTable");
-    
+    const table = document.querySelector("#bookTable > tbody");
+    table.innerHTML = "";
+
     for (let i = 0; i < myLibrary.length; i++) {
+        const currentBook = myLibrary[i]
         const tableRow = document.createElement("tr");
-        
+        tableRow.setAttribute("data-book-id", currentBook.id)
         // Iterate the keys in current book, if they key is
         // a desired key, add it to the table row.
-        for (const key in myLibrary[i]) {
-            if (myLibrary[i].hasOwnProperty(key) && propertiesToDisplay.includes(key)) {
+        for (const key in currentBook) {
+            if (currentBook.hasOwnProperty(key) && propertiesToDisplay.includes(key)) {
                 const columnVal = document.createElement("td");
-                columnVal.textContent = myLibrary[i][key];
+                columnVal.textContent = currentBook[key];
                 tableRow.appendChild(columnVal);
             }
         }
-        
+        let button = document.createElement("button");
+        button.textContent = "DEL";
+        tableRow.appendChild(button);
         table.appendChild(tableRow);
     }
-}
-
-
-
-
-
-const addBookButton = document.querySelector("#addBookButton");
-const modal = document.querySelector("#modal");
-
-addBookButton.addEventListener("click", () => {
-    modal.showModal();
-})
-
-const submitButton = document.querySelector("#submit");
-submitButton.addEventListener("click", submitBook);
-
-function submitBook(event) {
-    event.preventDefault();
-    let bookName = document.querySelector("#bookName").value;
-    let author = document.querySelector("#author").value;
-    let pageCount = document.querySelector("#pageCount").value;
-    let isRead = document.querySelector("#isRead").checked;
-    addBookToLibrary(bookName, author, pageCount, isRead);
-    displayBooks(); // need to make this function reset upon submittal.
-    modal.close();
 }
