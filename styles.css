@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+    font-family:'Times New Roman', Times, serif;
+    margin: 0px; 
+    /* Removing margin makes modal in top left */
+}
+
+thead {
+    display: none;
+}
+
+.backgroundCover {
+    fill: rgb(83, 44, 44);
+}
+
+.spineIndent {
+    fill: rgb(56, 22, 22);
+}
+
+.bookTitle, h1, h2 {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 13px;
+    fill: rgb(34, 23, 17);
+}
+
+#page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+#leftSide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(194, 185, 165, 0.623);
+    flex: 1;
+}
+
+#titleArea {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: 'Brush Script MT', cursive;
+    margin: 30px 0px 50px 0px;
+    /* background-color: rgba(194, 185, 165, 0.623); */
+}
+
+#leftSide > svg {
+    margin: 30px 0px;
+    width: 25%;
+    height: auto;
+}
+
+#titleText {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#titleText > h1 {
+    font-size: 2rem;
+    color: rgb(66, 28, 28);
+}
+
+#titleText > h2 {
+    font-size: 2rem;
+    color: rgba(168, 144, 6, 0.767);
+}
+
+#leftSide > button {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    background-color: tan;
+    border: none;
+    border-radius: 5px;
+}
+
+#rightSide {
+    /* background-color: blue; */
+    flex: 2;
+    
+}
+
+tbody {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+tr {
+    padding: 40px 10px;
+    width: 250px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(241, 211, 172);
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 20px 40px;
+}
+
+td {
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.author {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.pageCount {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.isRead {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.deleteButton {
+    font-size: 1.1rem;
+    padding: 7px 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.deleteButton:hover {
+    cursor: pointer;
+}

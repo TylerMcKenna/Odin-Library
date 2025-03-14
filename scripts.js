@@ -37,12 +37,12 @@ function submitBook(event) {
 function Book(title, author, pageCount, isRead) {
     this.id = crypto.randomUUID();
     this.title = title;
-    this.author = author;
-    this.pageCount = pageCount;
+    this.author = `By ${author}`;
+    this.pageCount = `${pageCount} pages`;
     if (isRead) {
         this.isRead = "Read";
     } else {
-        this.isRead = "Not read";
+        this.isRead = "Not yet read";
     }
     this.info = function () {
         return `${this.title} by ${this.author}, ${this.pageCount} pages, ${this.isRead}`;
@@ -69,11 +69,13 @@ function displayBooks() {
             if (currentBook.hasOwnProperty(key) && propertiesToDisplay.includes(key)) {
                 const columnVal = document.createElement("td");
                 columnVal.textContent = currentBook[key];
+                columnVal.classList.add(key)
                 tableRow.appendChild(columnVal);
             }
         }
         let button = document.createElement("button");
-        button.textContent = "DEL";
+        button.textContent = "Delete Book";
+        button.classList.add("deleteButton");
         tableRow.appendChild(button);
         table.appendChild(tableRow);
     }
