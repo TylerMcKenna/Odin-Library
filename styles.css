@@ -9,6 +9,10 @@ thead {
     display: none;
 }
 
+#titleInSVG {
+    fill: rgb(56, 22, 22);
+}
+
 .backgroundCover {
     fill: rgb(83, 44, 44);
 }
@@ -59,6 +63,7 @@ thead {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    align-self: center;
 }
 
 #titleText > h1 {
@@ -80,9 +85,9 @@ thead {
 }
 
 #rightSide {
-    /* background-color: blue; */
     flex: 2;
-    
+    overflow-y: auto;
+    height: 100%;
 }
 
 tbody {
@@ -107,6 +112,7 @@ tr {
 td {
     text-align: center;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    word-break: break-all;
 }
 
 .title {
@@ -132,12 +138,27 @@ td {
 }
 
 .deleteButton {
+    margin-top: 10px;
+}
+
+tbody button {
     font-size: 1.1rem;
     padding: 7px 20px;
     border: 1px solid black;
     border-radius: 4px;
 }
 
-.deleteButton:hover {
+tbody button:hover {
     cursor: pointer;
+}
+
+dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+dialog::backdrop {
+    background-color: rgba(153, 153, 153, 0.486);
 }

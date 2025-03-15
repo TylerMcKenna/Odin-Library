@@ -18,8 +18,7 @@
                     <rect class="spineIndent" x="10" y="2" width="10" height="146"/>
                     <rect class="backgroundCover" width="10" height="150"/>
                     <rect class="backgroundCover" x="20" width="130" height="150"/>
-                    <!-- FIX THIS COLOR!! -->
-                    <!-- <rect id="titleArea" x="35" y="20" width="50" height="25" fill="darkbrown"/>  -->
+                    <rect id="titleInSVG" x="35" y="20" width="50" height="25"/> 
                 </svg>  
                 <div id="titleText">
                     <h1>Book Tracker</h1>
@@ -28,17 +27,17 @@
             </div>
             <button id="addBookButton">Add book to collection</button>
             <dialog id="modal">
-                <form>
+                <form id="bookForm">
                     <label for="bookName">Book name:</label>
-                    <input type="text" id="bookName" name="bookName">
+                    <input type="text" id="bookName" name="bookName" required>
                     <label for="author">Author:</label>
-                    <input type="text" id="author" name="author">
+                    <input type="text" id="author" name="author" required>
                     <label for="pageCount">Page count:</label>
-                    <input type="text" id="pageCount" name="pageCount">
+                    <input type="text" id="pageCount" name="pageCount" required>
                     <label for="isRead">Read:</label>
                     <input type="checkbox" id="isRead" name="isRead">
                     <button type="submit" id="submit">Submit</button>
-                    <button formmethod="dialog">Cancel</button>
+                    <button type="button" class="cancel" formmethod="dialog">Cancel</button>
                 </form>
             </dialog>
         </div>
